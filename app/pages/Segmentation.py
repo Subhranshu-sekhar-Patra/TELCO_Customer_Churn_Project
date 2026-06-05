@@ -1,12 +1,16 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[2]
+DATA_FILE = next(BASE_DIR.glob("data/*.csv"), None)
+if DATA_FILE is None:
+    raise FileNotFoundError("Could not find dataset CSV in the data/ folder.")
 
 st.title("Customer Segmentation")
 
-df = pd.read_csv(
-    "data/Telco_Customer_Churn.csv"
-)
+df = pd.read_csv(DATA_FILE)
 
 # Segment Statistics
 

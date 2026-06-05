@@ -1,15 +1,17 @@
 import pickle
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parents[2]
 model = pickle.load(
     open(
-        "models/best_model.pkl",
+        BASE_DIR / "models" / "best_model.pkl",
         "rb"
     )
 )
 
 scaler = pickle.load(
     open(
-        "models/scaler.pkl",
+        BASE_DIR / "models" / "scaler.pkl",
         "rb"
     )
 )
